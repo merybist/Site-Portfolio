@@ -110,6 +110,10 @@ const Projects = () => {
 
     const loadGithubStats = async () => {
       try {
+        const shouldLoadRepos =
+          (githubStatsConfig.useTotalStars || githubStatsConfig.useTotalForks) &&
+          githubStatsConfig.user;
+
         const [userRes, repoRes, reposRes] = await Promise.all([
           githubStatsConfig.user
             ? fetch(`https://api.github.com/users/${githubStatsConfig.user}`)
@@ -117,7 +121,7 @@ const Projects = () => {
           githubStatsConfig.repo
             ? fetch(`https://api.github.com/repos/${githubStatsConfig.repo}`)
             : Promise.resolve(null),
-          githubStatsConfig.useTotalStars && githubStatsConfig.user
+          shouldLoadRepos
             ? fetch(`https://api.github.com/users/${githubStatsConfig.user}/repos?per_page=100`)
             : Promise.resolve(null),
         ]);
@@ -133,6 +137,13 @@ const Projects = () => {
               0,
             )
           : undefined;
+        const totalForks = Array.isArray(reposData)
+          ? reposData.reduce(
+              (sum: number, repo: { forks_count?: number }) =>
+                sum + (repo.forks_count || 0),
+              0,
+            )
+          : undefined;
 
         if (!isMounted) return;
         setGithubStats({
@@ -141,7 +152,10 @@ const Projects = () => {
             githubStatsConfig.useTotalStars && totalStars !== undefined
               ? totalStars
               : repoData?.stargazers_count ?? undefined,
-          forks: repoData?.forks_count ?? undefined,
+          forks:
+            githubStatsConfig.useTotalForks && totalForks !== undefined
+              ? totalForks
+              : repoData?.forks_count ?? undefined,
         });
       } catch {
         if (!isMounted) return;

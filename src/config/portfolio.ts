@@ -1,6 +1,7 @@
 // Portfolio Configuration
 export const portfolioConfig = {
   // Personal Information
+  header: "",
   name: "",
   title: "",
   subtitle: "",
@@ -42,11 +43,12 @@ export const portfolioConfig = {
 
   // GitHub Stats
   githubStats: {
-    enabled: false,
+    enabled: true,
     user: "username",
-    repo: "username/repo",
+    repo: "username/repository",
     title: "GitHub Stats",
     useTotalStars: false,
+    useTotalForks: false,
   },
   contributionsTechStack: {
     enabled: false,

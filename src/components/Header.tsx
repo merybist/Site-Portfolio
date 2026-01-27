@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { portfolioConfig } from '@/config/portfolio';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -35,13 +36,13 @@ const Header = () => {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-background/80 backdrop-blur-md border-b border-border' : 'bg-transparent'
+          isScrolled ? 'bg-background/80 backdrop-blur-md' : 'bg-transparent'
         }`}
       >
         <nav className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <a href="#" className="text-2xl font-bold font-mono text-accent-blue hover:text-accent-purple transition-colors duration-300">
-              &lt;merybist /&gt;
+              &lt; {portfolioConfig.header} &gt;
             </a>
 
             <div className="hidden md:flex items-center gap-8">
