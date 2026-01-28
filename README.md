@@ -35,7 +35,7 @@ yarn build
 
 All site content is controlled from: 🗂️
 
-- `src/config/portfolio.ts`
+- `src/config/config.json`
 
 Key sections you can edit: ✍️
 
