@@ -1,21 +1,21 @@
 {
   "personal": {
-    "name": "mak5er",
-    "title": "Developer",
-    "subtitle": "Learning and building cool stuff",
-    "bio": "Developer with 3+ years of experience. Learning Python, TypeScript, Docker and many other technologies. Always learning, always growing."
+    "name": "<Your Name>",
+    "title": "<Your Title / Role>",
+    "subtitle": "<Short tagline / subtitle>",
+    "bio": "<A brief bio about you, experience, and skills>"
   },
   "contact": {
-    "email": "mmaksym.reva@gmail.com",
-    "github": "https://github.com/mak5er",
-    "telegram": "https://t.me/mak5er",
-    "twitter": "https://twitter.com/mak5er",
-    "instagram": "https://instagram.com/mak5er"
+    "email": "<Email>",
+    "github": "<GitHub URL>",
+    "telegram": "<Telegram URL>",
+    "twitter": "<Twitter URL>",
+    "instagram": "<Instagram URL>"
   },
   "githubStats": {
     "enabled": true,
-    "user": "mak5er",
-    "repo": "mak5er/Downloader-Bot",
+    "user": "<GitHub username>",
+    "repo": "<Repo to show stats for>",
     "title": "GitHub Stats",
     "useTotalStars": true
   },
@@ -24,19 +24,14 @@
     "data": [
       {
         "id": 1,
-        "organization": "z0team",
-        "position": "Co-Owner",
-        "summary": "Co-Owner and z0team developer, fell in love with programming and DevOps.",
+        "organization": "<Organization Name>",
+        "position": "<Your Position>",
+        "summary": "<Brief summary of your contribution>",
         "projects": [
           {
-            "name": "z0music",
-            "link": "https://github.com/z0team/z0music",
-            "status": "Active"
-          },
-          {
-            "name": "z0team",
-            "link": "https://github.com/",
-            "status": "In Development"
+            "name": "<Project Name>",
+            "link": "<Project GitHub URL or Website>",
+            "status": "<Active / In Development / Completed>"
           }
         ]
       }
@@ -47,151 +42,36 @@
     "title": "Contributors",
     "data": [
       {
-        "github": "https://github.com/merybist",
-        "role": "z0team Member. Developer"
+        "github": "<Contributor GitHub URL>",
+        "role": "<Role or contribution>"
       }
     ]
   },
   "skills": [
     {
-      "name": "Python",
-      "category": "backend"
-    },
-    {
-      "name": "React",
-      "category": "frontend"
-    },
-    {
-      "name": "TypeScript",
-      "category": "frontend"
-    },
-    {
-      "name": "JavaScript",
-      "category": "frontend"
-    },
-    {
-      "name": "Tailwind CSS",
-      "category": "frontend"
-    },
-    {
-      "name": "Vite",
-      "category": "frontend"
-    },
-    {
-      "name": "Node.js",
-      "category": "backend"
-    },
-    {
-      "name": "FastAPI",
-      "category": "backend"
-    },
-    {
-      "name": "Flask",
-      "category": "backend"
-    },
-    {
-      "name": "Django",
-      "category": "backend"
-    },
-    {
-      "name": "MongoDB",
-      "category": "database"
-    },
-    {
-      "name": "PostgreSQL",
-      "category": "database"
-    },
-    {
-      "name": "MySQL",
-      "category": "database"
-    },
-    {
-      "name": "SQLite",
-      "category": "database"
-    },
-    {
-      "name": "Git",
-      "category": "tools"
-    },
-    {
-      "name": "Docker",
-      "category": "tools"
-    },
-    {
-      "name": "Powershell",
-      "category": "tools"
-    },
-    {
-      "name": "Bash",
-      "category": "tools"
+      "name": "<Skill Name>",
+      "category": "<frontend / backend / database / tools / etc.>"
     }
   ],
   "projects": [
     {
       "id": 1,
-      "title": "Downloader Bot",
-      "description": "Social media downloader Bot on Telegram.",
-      "technologies": [
-        "Aiogram",
-        "Python",
-        "Docker"
-      ],
-      "status": "Active",
-      "github": "https://github.com/Mak5er/Downloader-Bot",
-      "demo": "https://t.me/MaxLoadBot",
-      "image": "https://socialify.git.ci/Mak5er/Downloader-Bot/image?forks=1&language=1&logo=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F8%2F82%2FTelegram_logo.svg&name=1&owner=1&pattern=Circuit+Board&stargazers=1&theme=Dark",
-      "featured": false
-    },
-    {
-      "id": 2,
-      "title": "z0music",
-      "description": "YT music downloader Bot on Telegram.",
-      "technologies": [
-        "Aiogram",
-        "yt-dlp",
-        "Python",
-        "Docker"
-      ],
-      "status": "Active",
-      "github": "https://github.com/z0team/z0music",
-      "demo": "hhttps://t.me/z0MusicBot",
-      "image": "https://socialify.git.ci/z0team/z0music/image?forks=1&language=1&logo=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F8%2F82%2FTelegram_logo.svg&name=1&owner=1&pattern=Circuit%20Board&stargazers=1&theme=Dark",
-      "featured": false
-    },
-    {
-      "id": 3,
-      "title": "Layout Changer",
-      "description": "A web application to easily switch between English QWERTY and Ukrainian YCUKEN keyboard layouts. ",
-      "technologies": [
-        "React",
-        "JavaScript",
-        "MUI"
-      ],
-      "status": "Active",
-      "github": "https://github.com/Mak5er/layout-changer",
-      "demo": "https://layout.mak5er.com/",
-      "image": "https://socialify.git.ci/Mak5er/layout-changer/image?forks=1&language=1&logo=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fa%2Fa7%2FReact-icon.svg&name=1&owner=1&pattern=Circuit+Board&stargazers=1&theme=Dark",
+      "title": "<Project Title>",
+      "description": "<Short description of the project>",
+      "technologies": ["<Tech1>", "<Tech2>", "..."],
+      "status": "<Active / Completed / In Development>",
+      "github": "<Project GitHub URL>",
+      "demo": "<Project Demo URL>",
+      "image": "<Image URL / preview>",
       "featured": false
     }
   ],
   "experience": [
     {
-      "year": "2025 - Present",
-      "title": "Developer",
-      "company": "Freelance / Personal Projects",
-      "description": "Working on development projects, learning new technologies and building cool stuff."
-    },
-    {
-      "year": "2024 - 2025",
-      "title": "Learning & First Projects",
-      "company": "Freelance / Self-taught",
-      "description": "First steps in freelance. Worked on first freelance projects."
-    },
-    {
-      "year": "2023 - 2024",
-      "title": "Learning & Building",
-      "company": "Self-taught",
-      "description": "Started my way in development. Learned Python, JavaScript, React, and other technologies."
+      "year": "<Start Year - End Year or Present>",
+      "title": "<Position / Role>",
+      "company": "<Company / Organization>",
+      "description": "<Short description of your work / responsibilities>"
     }
   ]
 }
