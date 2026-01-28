@@ -1,36 +1,43 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
-import About from './components/About';
+import Contributions from './components/Contributions';
+import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import { useViewport } from './hooks/useViewport';
 
 function App() {
-  const { width, height, isMobile, isTablet } = useViewport();
+  const [viewportHeight, setViewportHeight] = useState<number>(0);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const updateViewportHeight = () => {
+      setViewportHeight(window.innerHeight);
+    };
+
+    updateViewportHeight();
+    window.addEventListener('resize', updateViewportHeight);
+    return () => window.removeEventListener('resize', updateViewportHeight);
+  }, []);
 
   useEffect(() => {
     if (typeof document === 'undefined') return;
-    const nextVh = height ? `${height * 0.01}px` : '1vh';
+    const nextVh = viewportHeight ? `${viewportHeight * 0.01}px` : '1vh';
     document.documentElement.style.setProperty('--vh', nextVh);
-  }, [height]);
-
-  const viewport =
-    isMobile ? 'mobile' : isTablet ? 'tablet' : width ? 'desktop' : 'unknown';
+  }, [viewportHeight]);
 
   return (
-    <div
-      className="min-h-screen bg-background text-text-primary"
-      data-viewport={viewport}
-    >
+    <div className="min-h-screen bg-background text-text-primary">
       <Header />
       <main>
         <Hero />
         <Skills />
         <Projects />
-        <About />
+        <Contributions />
+        <Experience />
         <Contact />
       </main>
       <Footer />

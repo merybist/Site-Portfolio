@@ -5,10 +5,7 @@ import path from 'path'
 export default defineConfig({
   plugins: [react()],
   server: {
-    allowedHosts: [
-      'https://97cddaa19ec5.ngrok-free.app',
-      '46052a32e961.ngrok-free.app'
-    ],
+    allowedHosts: ['*'],
     host: '0.0.0.0',
     port: 3000,
     watch: {

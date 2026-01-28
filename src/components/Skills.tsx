@@ -1,10 +1,7 @@
 import { motion } from 'framer-motion';
 import { portfolioConfig } from '@/config/portfolio';
-import { useInView } from '@/hooks/useInView';
 
 const Skills = () => {
-  const [ref, isInView] = useInView({ threshold: 0.1 });
-
   const categories = [
     { name: 'Frontend', key: 'frontend' as const, color: 'accent-blue' },
     { name: 'Backend', key: 'backend' as const, color: 'accent-purple' },
@@ -16,9 +13,7 @@ const Skills = () => {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
+      transition: { staggerChildren: 0.12 },
     },
   };
 
@@ -27,18 +22,18 @@ const Skills = () => {
     visible: {
       opacity: 1,
       scale: 1,
-      transition: {
-        duration: 0.4,
-      },
+      transition: { duration: 0.6, ease: 'easeInOut' },
     },
   };
 
   return (
     <section id="skills" className="py-20 px-6 bg-secondary/30">
       <div className="max-w-7xl mx-auto">
+        {/* Заголовок з вбудованим whileInView */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
@@ -51,11 +46,12 @@ const Skills = () => {
           <div className="h-1 w-24 bg-gradient-to-r from-accent-blue to-accent-purple rounded-full" />
         </motion.div>
 
+        {/* Сітка карток */}
         <motion.div
-          ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
         >
           {categories.map((category) => {
@@ -67,7 +63,7 @@ const Skills = () => {
               <motion.div
                 key={category.key}
                 variants={itemVariants}
-                className="bg-secondary border border-border rounded-lg p-6 hover:border-accent-blue transition-all duration-300 hover:shadow-lg hover:shadow-accent-blue/10"
+                className="bg-secondary border border-border rounded-lg p-6 hover:border-accent-blue hover:shadow-lg hover:shadow-accent-blue/10"
               >
                 <h3 className="text-xl font-bold mb-6 text-accent-blue font-mono">
                   {category.name}

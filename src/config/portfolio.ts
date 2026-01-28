@@ -1,97 +1,56 @@
-// Portfolio Configuration
+// Portfolio Configuration - Load from config.json file
+import configData from './config.json';
+
 export const portfolioConfig = {
   // Personal Information
-  name: "",
-  title: "",
-  subtitle: "",
-  bio: "",
+  name: configData.personal.name || 'Developer',
+  title: configData.personal.title || 'Developer',
+  subtitle: configData.personal.subtitle || 'Building cool stuff',
+  bio: configData.personal.bio || 'Developer passionate about creating amazing experiences',
   
   // Contact & Social
-  contact: {
-    email: "",
-    github: "",
-    telegram: "",
-    twitter: "",
-    instagram: "",
+  contact: configData.contact || {
+    email: '',
+    github: '',
+    telegram: '',
+    twitter: '',
+    instagram: ''
   },
 
-  // Skills & Technologies | example: { name: "JavaScript", category: "frontend" }
-  skills: [
-    { name: "JavaScript", category: "frontend" },
-    { name: "TypeScript", category: "frontend" },
-    { name: "React", category: "frontend" },
-    { name: "Node.js", category: "backend" },
-    { name: "PostgreSQL", category: "backend" },
-    { name: "Figma", category: "tools" },
-  ],
+  // Skills & Technologies
+  skills: configData.skills || [],
 
   // Projects Portfolio
-  projects: [
-    {
-      id: 1,
-      title: "Example Project",
-      description: "Short summary of what this project does and why it matters.",
-      technologies: ["React", "TypeScript", "Vite"],
-      status: "Active",
-      github: "https://github.com/username/project",
-      demo: "https://example.com",
-      image: "https://via.placeholder.com/1200x800.png?text=Project+Preview",
-      featured: false,
-    },
-  ],
+  projects: configData.projects || [],
 
   // GitHub Stats
-  githubStats: {
-    enabled: false,
-    user: "username",
-    repo: "username/repo",
-    title: "GitHub Stats",
-    useTotalStars: false,
+  githubStats: configData.githubStats || {
+    enabled: true,
+    user: '',
+    repo: '',
+    title: 'GitHub Stats',
+    useTotalStars: true,
   },
+  
   contributionsTechStack: {
-    enabled: false,
-    title: "Tech Stack",
-    source: "github",
-    user: "username",
+    enabled: true,
+    title: 'Tech Stack',
+    source: 'github',
+    user: configData.githubStats?.user || '',
     limit: 8,
     items: [],
   },
 
   // Contributor Roles & Organizations
   contributionsSection: {
-    enabled: false,
-    contributorsEnabled: false,
-    contributorsTitle: "Contributors",
-    contributors: [
-      { github: "https://github.com/username", role: "Developer" },
-    ],
+    enabled: configData.contributions?.enabled ?? true,
+    contributorsEnabled: configData.contributors?.enabled ?? true,
+    contributorsTitle: configData.contributors?.title || 'Contributors',
+    contributors: configData.contributors?.data || [],
   },
-  contributions: [
-    {
-      id: 1,
-      organization: "Example Org",
-      position: "Contributor",
-      summary: "Brief description of your role and impact in the organization.",
-      projects: [
-        { name: "Project One", link: "https://github.com/org/project-one", status: "Active" },
-        { name: "Project Two", link: "https://github.com/org/project-two", status: "In Development" },
-      ],
-    },
-  ],
+  
+  contributions: configData.contributions?.data || [],
 
   // Experience Timeline
-  experience: [
-    {
-      year: "2024 - Present",
-      title: "Frontend Developer",
-      company: "Freelance",
-      description: "Building responsive web apps and design systems for clients.",
-    },
-    {
-      year: "2022 - 2024",
-      title: "Junior Developer",
-      company: "Startup Name",
-      description: "Worked on UI features, performance, and accessibility improvements.",
-    },
-  ],
+  experience: configData.experience || [],
 };
