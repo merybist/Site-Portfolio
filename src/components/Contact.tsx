@@ -2,10 +2,7 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Send } from 'lucide-react';
 
-import { useInView } from '@/hooks/useInView';
-
 const Contact = () => {
-  const [ref, isInView] = useInView({ threshold: 0.1 });
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -16,41 +13,30 @@ const Contact = () => {
   );
   const [statusMessage, setStatusMessage] = useState('');
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormStatus('sending');
-    setStatusMessage('');
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  setFormStatus('sending');
+  setStatusMessage('');
 
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(formData),
-      });
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
 
-      if (!response.ok) {
-        let details = '';
-        try {
-          const payload = await response.json();
-          details = payload?.details || payload?.error || '';
-        } catch {
-          details = '';
-        }
-        throw new Error(details || 'Request failed');
-      }
-
-      setFormStatus('success');
-      setStatusMessage('Message sent. I will get back to you soon!');
-      setFormData({ name: '', email: '', message: '' });
-    } catch (error) {
-      setFormStatus('error');
-      const message =
-        error instanceof Error && error.message
-          ? `Failed to send. ${error.message}`
-          : 'Failed to send. Please try again later.';
-      setStatusMessage(message);
+    if (!res.ok) {
+      throw new Error('Failed to send message');
     }
-  };
+
+    setFormStatus('success');
+    setStatusMessage('Message sent! I will reply soon.');
+    setFormData({ name: '', email: '', message: '' });
+  } catch (err) {
+    setFormStatus('error');
+    setStatusMessage('Failed to send message. Try again later.');
+  }
+};
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -59,16 +45,15 @@ const Contact = () => {
     });
   };
 
-
-
   return (
     <section id="contact" className="py-20 px-6 bg-secondary/30">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, ease: 'easeInOut' }}
+          className="mb-6 text-center"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             <span className="text-accent-blue font-mono text-lg md:text-xl">05.</span>{' '}
@@ -85,10 +70,10 @@ const Contact = () => {
         </motion.div>
 
         <motion.div
-          ref={ref}
           initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 0.8, delay: 0.15, ease: 'easeInOut' }}
           className="bg-secondary border border-border rounded-lg p-6 sm:p-8 mb-12"
         >
           <form onSubmit={handleSubmit} className="space-y-6">
@@ -159,8 +144,6 @@ const Contact = () => {
             )}
           </form>
         </motion.div>
-
-        {/* Social icons removed, block cleaned up */}
       </div>
     </section>
   );

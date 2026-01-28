@@ -1,16 +1,14 @@
 import { motion } from 'framer-motion';
 import { portfolioConfig } from '@/config/portfolio';
-import { useInView } from '@/hooks/useInView';
 
 const About = () => {
-  const [ref, isInView] = useInView({ threshold: 0.1 });
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3,
+        staggerChildren: 0.2,
       },
     },
   };
@@ -21,8 +19,8 @@ const About = () => {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 0.6,
-        ease: 'easeOut',
+        duration: 0.8,
+        ease: 'easeInOut',
       },
     },
   };
@@ -32,7 +30,8 @@ const About = () => {
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
           className="mb-16"
         >
@@ -46,10 +45,10 @@ const About = () => {
         </motion.div>
 
         <motion.div
-          ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
           className="relative"
         >
           <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent-blue via-accent-purple to-accent-green" />

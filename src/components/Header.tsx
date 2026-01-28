@@ -1,25 +1,16 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Header = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const navItems = [
     { name: 'Skills', href: '#skills', number: '01' },
     { name: 'Projects', href: '#projects', number: '02' },
-    { name: 'About', href: '#about', number: '03' },
-    { name: 'Contact', href: '#contact', number: '04' },
+    { name: 'Contributions', href: '#contributions', number: '03' },
+    { name: 'Experience', href: '#about', number: '04' },
+    { name: 'Contact', href: '#contact', number: '05' },
   ];
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -34,14 +25,12 @@ const Header = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-background/80 backdrop-blur-md border-b border-border' : 'bg-transparent'
-        }`}
+        className='fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md'
       >
         <nav className="max-w-7xl mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <a href="#" className="text-2xl font-bold font-mono text-accent-blue hover:text-accent-purple transition-colors duration-300">
-              &lt;merybist /&gt;
+              &lt;mak5er /&gt;
             </a>
 
             <div className="hidden md:flex items-center gap-8">
@@ -75,7 +64,7 @@ const Header = () => {
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.4, ease: 'easeInOut' }}
             className="fixed inset-0 z-40 md:hidden bg-background"
           >
             <div className="flex flex-col items-center justify-center h-full gap-8">
@@ -86,7 +75,7 @@ const Header = () => {
                   onClick={(e) => handleNavClick(e, item.href)}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
+                  transition={{ delay: index * 0.08, duration: 0.5, ease: 'easeInOut' }}
                   className="text-2xl text-text-secondary hover:text-accent-blue transition-colors duration-300 font-mono"
                 >
                   <span className="text-accent-blue">{item.number}.</span> {item.name}

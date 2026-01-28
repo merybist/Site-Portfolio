@@ -1,10 +1,8 @@
 import { motion } from 'framer-motion';
 import { Github, Send, Twitter, Instagram } from 'lucide-react';
 import { portfolioConfig } from '@/config/portfolio';
-import { useViewport } from '@/hooks/useViewport';
 
 const Hero = () => {
-  const { isMobile } = useViewport();
   const handleAnchorClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string,
@@ -20,8 +18,8 @@ const Hero = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
       },
     },
   };
@@ -32,8 +30,8 @@ const Hero = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
-        ease: 'easeOut',
+        duration: 0.8,
+        ease: 'easeInOut',
       },
     },
   };
@@ -127,22 +125,21 @@ const Hero = () => {
         </motion.div>
       </motion.div>
 
-      {!isMobile && (
-        <motion.div
-          className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 1,
-            repeat: Infinity,
-            repeatType: 'reverse',
-          }}
-        >
-          <div className="w-6 h-10 border-2 border-text-secondary rounded-full flex justify-center p-2">
-            <div className="w-1 h-2 bg-text-secondary rounded-full" />
-          </div>
-        </motion.div>
-      )}
+      {/* Scroll indicator - visible only on medium+ screens */}
+      <motion.div
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:flex"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 1,
+          repeat: Infinity,
+          repeatType: 'reverse',
+        }}
+      >
+        <div className="w-6 h-10 border-2 border-text-secondary rounded-full flex justify-center p-2">
+          <div className="w-1 h-2 bg-text-secondary rounded-full" />
+        </div>
+      </motion.div>
     </section>
   );
 };

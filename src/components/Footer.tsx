@@ -1,4 +1,4 @@
-import { Github, Send, Twitter, Heart } from 'lucide-react';
+import { Github, Send, Twitter, Heart, Instagram } from 'lucide-react';
 import { portfolioConfig } from '@/config/portfolio';
 
 const Footer = () => {
@@ -6,6 +6,8 @@ const Footer = () => {
     { icon: Github, href: portfolioConfig.contact.github, label: 'GitHub' },
     { icon: Send, href: portfolioConfig.contact.telegram, label: 'Telegram' },
     { icon: Twitter, href: portfolioConfig.contact.twitter, label: 'Twitter' },
+    { icon: Instagram, href: portfolioConfig.contact.instagram, label: 'Instagram' },
+
   ];
 
   return (
@@ -29,7 +31,7 @@ const Footer = () => {
 
           <div className="text-center">
             <p className="text-text-secondary text-sm font-mono flex items-center gap-2 justify-center">
-              Built with <Heart size={16} className="text-accent-blue fill-accent-blue" /> by{' merybist '}
+              Built with <Heart size={16} className="text-accent-blue fill-accent-blue" /> by 
               <span className="text-accent-blue">{portfolioConfig.name}</span>
             </p>
             <p className="text-text-secondary text-xs mt-2">
