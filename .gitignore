@@ -27,4 +27,5 @@ yarn-error.log*
 .yarnrc.yml
 .yarn/*
 .dev.vars
-.env    
+.env
+.portfolio-configured

@@ -7,7 +7,9 @@ export const portfolioConfig = {
   title: configData.personal.title || 'Developer',
   subtitle: configData.personal.subtitle || 'Building cool stuff',
   bio: configData.personal.bio || 'Developer passionate about creating amazing experiences',
-  
+  location: configData.personal.location || '',
+  avatar: configData.personal.avatar || '',
+
   // Contact & Social
   contact: configData.contact || {
     email: '',
@@ -31,7 +33,7 @@ export const portfolioConfig = {
     title: 'GitHub Stats',
     useTotalStars: true,
   },
-  
+
   contributionsTechStack: {
     enabled: true,
     title: 'Tech Stack',
@@ -48,7 +50,7 @@ export const portfolioConfig = {
     contributorsTitle: configData.contributors?.title || 'Contributors',
     contributors: configData.contributors?.data || [],
   },
-  
+
   contributions: configData.contributions?.data || [],
 
   // Experience Timeline
