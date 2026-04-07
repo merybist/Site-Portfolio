@@ -4,11 +4,13 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "vite --host 0.0.0.0 --port 3000",
+    "dev": "node scripts/setup.js --check && vite --host 0.0.0.0 --port 3000",
+    "setup": "node scripts/setup.js",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@clack/prompts": "^0.10.1",
     "axios": "^1.8.4",
     "framer-motion": "^11.0.5",
     "lucide-react": "^0.507.0",
