@@ -1,86 +1,115 @@
-# Portfolio Frontend ✨
+# Site Portfolio Template
 
-Personal portfolio website built with React, Vite, TypeScript, and Tailwind CSS. ⚛️⚡🧩🎨
+A modern portfolio template built with React, Vite, TypeScript, and Tailwind CSS.
 
-## Requirements ✅
+## Features
 
-- Node.js 18+ (recommended) 🟢
-- npm (or yarn/pnpm) 📦
+- First-run setup CLI (`npm run setup`)
+- Auto setup check before `npm run dev`
+- Config-driven content from a single file (`src/config/config.json`)
+- Optional avatar in Hero section
+- Animated sections (Hero, Skills, Projects, Contributions, Experience, Contact)
+- Contact API endpoint for Telegram notifications
 
-## Getting Started 🚀
+## Tech Stack
 
-Install dependencies: 📥
+- React 18
+- TypeScript
+- Vite
+- Tailwind CSS
+- Framer Motion
+- Lucide React
+- @clack/prompts (setup wizard)
 
-```bash
-yarn
-```
+## Quick Start
 
-Start the dev server: 🧪
-
-```bash
-yarn dev
-```
-
-The app runs at `http://localhost:3000`. 🌐
-
-## Build & Preview 🏗️
-
-Build for production: 🏁
+1. Install dependencies:
 
 ```bash
-yarn build
+npm install
 ```
 
-## Customize the Content 🛠️
+2. Start development:
 
-All site content is controlled from: 🗂️
+```bash
+npm run dev
+```
+
+On first run, setup wizard will start automatically if `.portfolio-configured` is missing.
+
+## Setup Wizard
+
+Run manually any time:
+
+```bash
+npm run setup
+```
+
+The wizard collects core data:
+
+- name, title, subtitle, bio
+- location and optional avatar URL/path
+- social links
+- skills
+- deployment target
+
+For GitHub Pages it also patches `vite.config.ts` base path.
+
+## Single Source of Content
+
+Main content file:
 
 - `src/config/config.json`
 
-Key sections you can edit: ✍️
+Important sections:
 
-- Personal info: `name`, `title`, `subtitle`, `bio` 👤
-- Contact/social links: `contact` 🔗
-- Skills: `skills` 🧠
-- Projects: `projects` 🧩
-- Contributions & organization projects: `contributions` 🤝
-- Contributors (GitHub avatars auto-fetched): `contributionsSection.contributors` 👥
-- GitHub stats: `githubStats` 📊
-- Tech stack (auto from GitHub languages): `contributionsTechStack` 🧰
-- Experience timeline: `experience` 🧭
+- `personal` (name, title, subtitle, bio, location, avatar)
+- `contact` (email + social links)
+- `skills`
+- `projects`
+- `contributions`
+- `contributors`
+- `experience`
 
-### Contributors (GitHub avatars) 👥
+## Optional Avatar
 
-Add GitHub links and roles here: 🧾
+Set your image in:
 
-```ts
-contributionsSection: {
-  contributorsEnabled: true,
-  contributorsTitle: "Contributors",
-  contributors: [
-    { github: "https://github.com/username", role: "Developer" },
-  ],
-},
-```
+- `src/config/config.json` -> `personal.avatar`
 
-The site fetches avatar + display name from the GitHub API. 🧑‍💻
+Behavior:
 
-### Tech Stack (auto from GitHub) 🧰
+- if `avatar` is set: image is rendered in Hero
+- if `avatar` is empty: no avatar block is rendered
 
-The tech stack can auto-populate from your GitHub repos: ⚙️
+## Scripts
 
-```ts
-contributionsTechStack: {
-  enabled: true,
-  title: "Tech Stack",
-  source: "github",
-  user: "username",
-  limit: 8,
-  items: [],
-},
-```
+- `npm run dev` - run setup check and start Vite dev server
+- `npm run setup` - run interactive setup wizard
+- `npm run build` - production build
+- `npm run preview` - preview build
 
-## Notes 📝
+## Deployment Notes
 
-- GitHub data is fetched from public APIs and may be rate-limited. ⏳
-- If you want to avoid API calls, you can disable sections or provide manual data. ✋
+### Vercel
+
+- Works out of the box for SPA/static deployment.
+- Configure environment variables for `api/contact.ts` if using Telegram notifications.
+
+### GitHub Pages
+
+- Select GitHub Pages during setup and provide repository name.
+- Setup wizard will patch Vite `base` automatically.
+
+## Contact API (Telegram)
+
+`api/contact.ts` expects:
+
+- `TG_BOT_TOKEN`
+- `TG_CHAT_ID`
+
+Without these, form submissions will fail in production.
+
+## License
+
+GPL-3.0
