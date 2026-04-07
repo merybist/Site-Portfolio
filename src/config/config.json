@@ -3,7 +3,9 @@
     "name": "<Your Name>",
     "title": "<Your Title / Role>",
     "subtitle": "<Short tagline / subtitle>",
-    "bio": "<A brief bio about you, experience, and skills>"
+    "bio": "<A brief bio about you, experience, and skills>",
+    "location": "",
+    "avatar": ""
   },
   "contact": {
     "email": "<Email>",
